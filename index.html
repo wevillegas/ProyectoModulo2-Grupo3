@@ -1,14 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ESTILOS BOOSTSTRAP  -->
+    <link rel="stylesheet" href="/styles/bootstrap.css">
+    <!-- ESTILOS PROPIOS DEL INDEX  -->
+    <link rel="stylesheet" href="/styles/stylesIndex.css">
+    <!-- FONT AWESOME  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Proyecto 2 Grupo 3</title>
 </head>
+
 <body>
-    <h1>
-        PROYECTO PAGINA WEB VIDEOJUEGOS
-    </h1>
+    <header>
+
+    </header>
+    <main>
+        <div class="indexMainContainer container-lg">
+            <!--
+            ======================================
+            ==		     BUSCADOR 	            ==
+            ====================================== -->
+            <section id="searchSection">
+                <div class="container-lg mt-4">
+                    <div class="row">
+                        <div class="col-lg-10 col-sm-8 p-0">
+                            <div class="SearchContainer">
+                                <div class="btnSearch">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <input type="text" placeholder="Buscar juegos">
+                            </div>
+                        </div>
+                        <!--
+                        ======================================
+                        ==		     	  CARRO     	    ==
+                        ====================================== -->
+                        <div class="col-lg-2 col-sm-4 indexCartContainer">
+                            <a href="#" class="text-decoration-none"> <i class="fas fa-shopping-cart"></i> Carro</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--
+            ======================================
+            ==  	  DESTACADO PRINCIPAL       ==
+            ====================================== -->
+            <section id="mainGame">
+                <div class="mainGameCardContainer my-4">
+                    <div class="card border-0 mainGameCard">
+                        <div class="row g-0">
+                            <!-- IMAGEN DE LA CARD  -->
+                            <div class="col-md-8 mainGameCardIMG">
+                                <img src="https://as.com/meristation/imagenes/2021/07/20/avances/1626758869_049177_1626771602_noticia_normal.jpg"
+                                    class="img-fluid rounded-start" alt="Juego destacado">
+                            </div>
+                            <!-- BODY DE LA CARD  -->
+                            <div class="col-md-4 bg-dark bg-gradient d-flex align-items-center mainGameCardBody">
+                                <div class="card-body text-white">
+                                    <p class="card-text">Disponible</p>
+                                    <h1 class="card-title">FIFA 22</h1>
+                                    <h2 class="card-subtitle h5 pb-3">EA SPORTS</h2>
+                                    <p class="card-text">FIFA 22 es un videojuego de fútbol desarrollado por EA
+                                        Vancouver y EA Romania, siendo publicado por EA Sports.</p>
+                                    <div class="mainGameCardBodyCategories mt-3">
+                                        <p class="btn btn-dark">Deportes</p>
+                                        <p class="btn btn-dark">Fútbol</p>
+                                        <p class="btn btn-dark">Simulación</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    </main>
+    </div>
+    <footer>
+
+    </footer>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/index.js"></script>
 </body>
+
 </html>

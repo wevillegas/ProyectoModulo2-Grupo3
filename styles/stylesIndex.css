@@ -1,0 +1,120 @@
+/*
+======================================
+==		     	 BODY   	         ==
+====================================== */
+
+body {
+    background-color: #151515;
+}
+
+/*
+======================================
+==	     	  BUSCADOR   	        ==
+====================================== */
+
+#searchSection .SearchContainer{
+    position: absolute;
+    padding: 0.3rem;
+}
+
+#searchSection .SearchContainer input {
+    width: 0;
+    height: 2.5rem;
+    padding: 0 1.25rem;
+    font-size: 1.125rem;
+    color: #000;
+    outline: none;
+    border: 1px solid silver;
+    border-radius: 1.9rem;
+    transition: all 0.6s ease;
+}
+
+#searchSection .SearchContainer .btnSearch {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #000;
+    width: 3.4rem;
+    height: 3.4rem;
+    line-height: 3.4rem;
+    text-align: center;
+    color: white;
+    font-size: 1.25rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#searchSection .SearchContainer:hover input{
+    width: 15rem;
+}
+
+#searchSection .SearchContainer input:focus {
+    width: 15rem;
+}
+
+/*
+======================================
+==		     	  CARRITO 	        ==
+====================================== */
+.indexCartContainer {
+    font-size: 1.4rem;
+    margin-top: 1rem;
+    text-align: right;
+}
+
+.indexCartContainer a{
+    margin-top: 1rem;
+    text-align: right;
+    color: rgb(134, 134, 134);
+    transition: all 0.2s ease;
+}
+
+.indexCartContainer a:hover {
+    color: white;
+}
+
+
+/*
+======================================
+==		    DESTACADO PRINCIPAL     ==
+====================================== */
+
+
+.mainGameCard {
+    box-shadow: 0px 15px 25px rgba(0, 0, 0, 1);
+}
+
+
+/*
+======================================
+==		     MEDIA QUERY     	    ==
+====================================== */
+
+@media screen and (max-width: 1280px) {
+    /* BUSCADOR  */
+    #searchSection .SearchContainer input {
+        width: 15rem;
+    }
+}
+
+@media screen and (max-width: 435px) {
+    /* BUSCADOR  */
+    #searchSection .SearchContainer {
+        width: 88%;
+        display: flex;
+    }
+    #searchSection .SearchContainer input {
+        flex-grow: 1;
+    }
+}
+
+
+@media screen and (max-width: 435px) {
+    /* CARRITO  */
+    .indexCartContainer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 55px;
+    }
+}
