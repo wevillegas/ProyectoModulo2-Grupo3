@@ -29,12 +29,16 @@
             <section id="searchSection">
                 <div class="container-lg mt-4">
                     <div class="row">
+                        <!--
+                        ======================================
+                        ==		    INPUT BUSCADOR         ==
+                        ====================================== -->
                         <div class="col-lg-10 col-sm-8 p-0">
                             <div class="SearchContainer">
                                 <div class="btnSearch">
                                     <i class="fas fa-search"></i>
                                 </div>
-                                <input type="text" placeholder="Buscar juegos">
+                                <input type="text" placeholder="Buscar">
                             </div>
                         </div>
                         <!--
@@ -42,7 +46,8 @@
                         ==		     	  CARRO     	    ==
                         ====================================== -->
                         <div class="col-lg-2 col-sm-4 indexCartContainer">
-                            <a href="#" class="text-decoration-none"> <i class="fas fa-shopping-cart"></i> Carro</a>
+                            <a href="#" class="text-decoration-none fs-5"> <i class="fas fa-shopping-cart"></i>
+                                Carro</a>
                         </div>
                     </div>
                 </div>
@@ -52,26 +57,34 @@
             ==  	  DESTACADO PRINCIPAL       ==
             ====================================== -->
             <section id="mainGame">
+                <!-- CONTENEDOR JUEGO DESTACADO  -->
                 <div class="mainGameCardContainer my-4">
-                    <div class="card border-0 mainGameCard">
+                    <div class="primaryGamesTitle d-none">
+                        <h1 class="h5 my-2">Novedad destacada</h1>
+                    </div>
+                    <div class="card mb-3 border-0 mainGameCard bg-transparent">
                         <div class="row g-0">
-                            <!-- IMAGEN DE LA CARD  -->
-                            <div class="col-md-8 mainGameCardIMG">
+                            <!-- IMAGEN DEL JUEGO DESTACADO  -->
+                            <div class="col-lg-8 mainGameCardIMG">
                                 <img src="https://as.com/meristation/imagenes/2021/07/20/avances/1626758869_049177_1626771602_noticia_normal.jpg"
-                                    class="img-fluid rounded-start" alt="Juego destacado">
+                                    class="img-fluid" alt="Juego destacado">
                             </div>
-                            <!-- BODY DE LA CARD  -->
-                            <div class="col-md-4 bg-dark bg-gradient d-flex align-items-center mainGameCardBody">
+                            <!-- BODY DEL JUEGO DESTACADO  -->
+                            <div class="col-lg-4 d-flex align-items-center mainGameCardBody">
                                 <div class="card-body text-white">
                                     <p class="card-text">Disponible</p>
                                     <h1 class="card-title">FIFA 22</h1>
-                                    <h2 class="card-subtitle h5 pb-3">EA SPORTS</h2>
-                                    <p class="card-text">FIFA 22 es un videojuego de fútbol desarrollado por EA
-                                        Vancouver y EA Romania, siendo publicado por EA Sports.</p>
-                                    <div class="mainGameCardBodyCategories mt-3">
-                                        <p class="btn btn-dark">Deportes</p>
-                                        <p class="btn btn-dark">Fútbol</p>
-                                        <p class="btn btn-dark">Simulación</p>
+                                    <h2 class="card-title h5 pb-3">EA SPORTS</h2>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural
+                                        lead-in to additional content. This content is a little bit longer.</p>
+                                    <!-- CATEGORIA DEL JUEGO DESTACADO  -->
+                                    <div class="mainGamecategories">
+                                        <a href="#sportCategorie">
+                                            <p class="btn btn-light text-dark border">Deportes</p>
+                                        </a>
+                                    </div>
+                                    <div class="mt-2 btn btn-dark text-white border">
+                                        <a href="#" class="text-decoration-none text-white">Ver más</a>
                                     </div>
                                 </div>
                             </div>
@@ -79,6 +92,315 @@
                     </div>
                 </div>
             </section>
+            <!--
+            ======================================
+            ==		DESTACADOS SECUNDARIOS      ==
+            ====================================== -->
+            <section id="secondayMainGames">
+                <div class="secondaryGamesContainer mt-5">
+                    <div class="secondaryGamesTitle">
+                        <h1 class="h5 my-2">Recomendados</h1>
+                    </div>
+                    <!-- IMAGENES -->
+                    <div class="row secondaryGamesIMGContainer">
+                        <div class="col-4 secondaryIMG">
+                            <a href="#">
+                                <img src="https://cdn2.unrealengine.com/tetra-preorder-standard-edition-epic-store-landscape-2560x1440-2560x1440-430970417.jpg"
+                                    alt="" class="img-fluid secondaryGamesIMG">
+                            </a>
+                        </div>
+                        <div class="col-4 secondaryIMG">
+                            <a href="#">
+                                <img src="https://depor.com/resizer/_5F_IqOzi8xdDUjawFGC_83f6VQ=/980x528/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/JI2AAI7VIBAJPHWM2SPLC3GHYA.jpg"
+                                    alt="" class="img-fluid secondaryGamesIMG">
+                            </a>
+                        </div>
+                        <div class="col-4 secondaryIMG">
+                            <a href="#">
+                                <img src="https://demonslayer-hinokami.sega.com/img/purchase/retail-standard.jpg" alt=""
+                                    class="img-fluid secondaryGamesIMG">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--
+            ======================================
+            ==		      CATEGORIAS     	    ==
+            ====================================== -->
+            <section id="categoriesSection">
+                <!-- CONTENEDOR DE CATEGORIAS  -->
+                <div class="categoriesContainer my-5">
+                    <div class="d-flex flex-row">
+                        <!-- CATEGORIA 1  -->
+                        <div class="categorie me-5 col-4" id="sportCategorie">
+                            <div class="secondaryGamesTitle mb-3">
+                                <h1 class="h5">Deportes</h1>
+                            </div>
+                            <!-- JUEGO -->
+                            <div class="d-flex flex-column">
+                                <a href="#" class="gameLink me-3">
+                                    <div class="card mb-3 bg-transparent mb-4 categoriesGameCard border-0" style="max-width: 500px;">
+                                        <div class="row g-0">
+                                            <div class="col-md-5 categorieCardIMG">
+                                                <img src="https://e.rpp-noticias.io/normal/2021/06/17/092509_1108850.jpg" class="img-fluid rounded-start secondaryGamesIMGG alt="...">
+                                            </div>
+                                            <div class="col-md-7 d-flex align-items-center">
+                                                <div class="card-body text-white">
+                                                    <h5 class="card-title">MADDEN NFL 22</h5>
+                                                    <div class="categoriePrice d-flex flex-row">
+                                                        <p class="">ARS$&nbsp</p> 
+                                                        <p>2.499</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <a href="#" class="gameLink me-3">
+                                    <div class="card mb-3 bg-transparent mb-4 categoriesGameCard border-0" style="max-width: 500px;">
+                                        <div class="row g-0">
+                                            <div class="col-md-5 categorieCardIMG">
+                                                <img src="https://e.rpp-noticias.io/normal/2021/06/17/092509_1108850.jpg" class="img-fluid rounded-start secondaryGamesIMGG alt="...">
+                                            </div>
+                                            <div class="col-md-7 d-flex align-items-center">
+                                                <div class="card-body text-white">
+                                                    <h5 class="card-title">MADDEN NFL 22</h5>
+                                                    <div class="categoriePrice d-flex flex-row">
+                                                        <p class="">ARS$&nbsp</p> 
+                                                        <p>2.499</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <a href="#" class="gameLink me-3">
+                                    <div class="card mb-3 bg-transparent mb-4 categoriesGameCard border-0" style="max-width: 500px;">
+                                        <div class="row g-0">
+                                            <div class="col-md-5 categorieCardIMG">
+                                                <img src="https://e.rpp-noticias.io/normal/2021/06/17/092509_1108850.jpg" class="img-fluid rounded-start secondaryGamesIMGG alt="...">
+                                            </div>
+                                            <div class="col-md-7 d-flex align-items-center">
+                                                <div class="card-body text-white">
+                                                    <h5 class="card-title">MADDEN NFL 22</h5>
+                                                    <div class="categoriePrice d-flex flex-row">
+                                                        <p class="">ARS$&nbsp</p> 
+                                                        <p>2.499</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <a href="#" class="gameLink me-3">
+                                    <div class="card mb-3 bg-transparent mb-4 categoriesGameCard border-0" style="max-width: 500px;">
+                                        <div class="row g-0">
+                                            <div class="col-md-5 categorieCardIMG">
+                                                <img src="https://e.rpp-noticias.io/normal/2021/06/17/092509_1108850.jpg" class="img-fluid rounded-start secondaryGamesIMGG alt="...">
+                                            </div>
+                                            <div class="col-md-7 d-flex align-items-center">
+                                                <div class="card-body text-white">
+                                                    <h5 class="card-title">MADDEN NFL 22</h5>
+                                                    <div class="categoriePrice d-flex flex-row">
+                                                        <p class="">ARS$&nbsp</p> 
+                                                        <p>2.499</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            
+                        </div>
+
+                        <!-- CATEGORIA 2 -->
+                        <div class="me-5 categorie col-4" id="strategyCategorie">
+                            <div class="secondaryGamesTitle  mb-3">
+                                <h1 class="h5">Estrategia</h1>
+                            </div>
+                            <!-- JUEGO -->
+                            <div class="d-flex flex-column">
+                                <a href="#" class="gameLink me-3">
+                                    <div class="card mb-3 bg-transparent mb-4 categoriesGameCard border-0" style="max-width: 500px;">
+                                        <div class="row g-0">
+                                            <div class="col-md-5 categorieCardIMG">
+                                                <img src="https://as01.epimg.net/meristation/imagenes/2019/11/18/trucos/1574079348_118792_1574079558_noticia_normal.jpg" class="img-fluid rounded-start secondaryGamesIMGG alt="...">
+                                            </div>
+                                            <div class="col-md-7 d-flex align-items-center">
+                                                <div class="card-body text-white">
+                                                    <h5 class="card-title">AGE OF EMPIRES 2</h5>
+                                                    <div class="categoriePrice d-flex flex-row">
+                                                        <p class="">ARS$&nbsp</p> 
+                                                        <p>2.499</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <a href="#" class="gameLink me-3">
+                                    <div class="card mb-3 bg-transparent mb-4 categoriesGameCard border-0" style="max-width: 500px;">
+                                        <div class="row g-0">
+                                            <div class="col-md-5 categorieCardIMG">
+                                                <img src="https://as01.epimg.net/meristation/imagenes/2019/11/18/trucos/1574079348_118792_1574079558_noticia_normal.jpg" class="img-fluid rounded-start secondaryGamesIMGG alt="...">
+                                            </div>
+                                            <div class="col-md-7 d-flex align-items-center">
+                                                <div class="card-body text-white">
+                                                    <h5 class="card-title">AGE OF EMPIRES 2</h5>
+                                                    <div class="categoriePrice d-flex flex-row">
+                                                        <p class="">ARS$&nbsp</p> 
+                                                        <p>2.499</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <a href="#" class="gameLink me-3">
+                                    <div class="card mb-3 bg-transparent mb-4 categoriesGameCard border-0" style="max-width: 500px;">
+                                        <div class="row g-0">
+                                            <div class="col-md-5 categorieCardIMG">
+                                                <img src="https://as01.epimg.net/meristation/imagenes/2019/11/18/trucos/1574079348_118792_1574079558_noticia_normal.jpg" class="img-fluid rounded-start secondaryGamesIMGG alt="...">
+                                            </div>
+                                            <div class="col-md-7 d-flex align-items-center">
+                                                <div class="card-body text-white">
+                                                    <h5 class="card-title">AGE OF EMPIRES 2</h5>
+                                                    <div class="categoriePrice d-flex flex-row">
+                                                        <p class="">ARS$&nbsp</p> 
+                                                        <p>2.499</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <a href="#" class="gameLink me-3">
+                                    <div class="card mb-3 bg-transparent mb-4 categoriesGameCard border-0" style="max-width: 500px;">
+                                        <div class="row g-0">
+                                            <div class="col-md-5 categorieCardIMG">
+                                                <img src="https://as01.epimg.net/meristation/imagenes/2019/11/18/trucos/1574079348_118792_1574079558_noticia_normal.jpg" class="img-fluid rounded-start secondaryGamesIMGG alt="...">
+                                            </div>
+                                            <div class="col-md-7 d-flex align-items-center">
+                                                <div class="card-body text-white">
+                                                    <h5 class="card-title">AGE OF EMPIRES 2</h5>
+                                                    <div class="categoriePrice d-flex flex-row">
+                                                        <p class="">ARS$&nbsp</p> 
+                                                        <p>2.499</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- CATEGORIA 3  -->
+                        <div class="categorie me-5 col-4 border-0" id="actionCategorie">
+                            <div class="secondaryGamesTitle  mb-3">
+                                <h1 class="h5">Acción</h1>
+                            </div>
+                            <!-- JUEGO -->
+                            <div class="d-flex flex-column">
+                                <a href="#" class="gameLink me-3">
+                                    <div class="card mb-3 bg-transparent mb-4 categoriesGameCard border-0" style="max-width: 500px;">
+                                        <div class="row g-0">
+                                            <div class="col-md-5 categorieCardIMG">
+                                                <img src="https://compass-ssl.xbox.com/assets/7f/22/7f223c75-56e3-45d3-8389-96ed6687f62c.jpg?n=299441_GLP-Page-Hero-0_1083x609.jpg" class="img-fluid rounded-start secondaryGamesIMGG alt="...">
+                                            </div>
+                                            <div class="col-md-7 d-flex align-items-center">
+                                                <div class="card-body text-white">
+                                                    <h5 class="card-title">BATTLEFIELD 2042</h5>
+                                                    <div class="categoriePrice d-flex flex-row">
+                                                        <p class="">ARS$&nbsp</p> 
+                                                        <p>2.499</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <a href="#" class="gameLink me-3">
+                                    <div class="card mb-3 bg-transparent mb-4 categoriesGameCard border-0" style="max-width: 500px;">
+                                        <div class="row g-0">
+                                            <div class="col-md-5 categorieCardIMG">
+                                                <img src="https://compass-ssl.xbox.com/assets/7f/22/7f223c75-56e3-45d3-8389-96ed6687f62c.jpg?n=299441_GLP-Page-Hero-0_1083x609.jpg" class="img-fluid rounded-start secondaryGamesIMGG alt="...">
+                                            </div>
+                                            <div class="col-md-7 d-flex align-items-center">
+                                                <div class="card-body text-white">
+                                                    <h5 class="card-title">BATTLEFIELD 2042</h5>
+                                                    <div class="categoriePrice d-flex flex-row">
+                                                        <p class="">ARS$&nbsp</p> 
+                                                        <p>2.499</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <a href="#" class="gameLink me-3">
+                                    <div class="card mb-3 bg-transparent mb-4 categoriesGameCard border-0" style="max-width: 500px;">
+                                        <div class="row g-0">
+                                            <div class="col-md-5 categorieCardIMG">
+                                                <img src="https://compass-ssl.xbox.com/assets/7f/22/7f223c75-56e3-45d3-8389-96ed6687f62c.jpg?n=299441_GLP-Page-Hero-0_1083x609.jpg" class="img-fluid rounded-start secondaryGamesIMGG alt="...">
+                                            </div>
+                                            <div class="col-md-7 d-flex align-items-center">
+                                                <div class="card-body text-white">
+                                                    <h5 class="card-title">BATTLEFIELD 2042</h5>
+                                                    <div class="categoriePrice d-flex flex-row">
+                                                        <p class="">ARS$&nbsp</p> 
+                                                        <p>2.499</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <a href="#" class="gameLink me-3">
+                                    <div class="card mb-3 bg-transparent mb-4 categoriesGameCard border-0" style="max-width: 500px;">
+                                        <div class="row g-0">
+                                            <div class="col-md-5 categorieCardIMG">
+                                                <img src="https://compass-ssl.xbox.com/assets/7f/22/7f223c75-56e3-45d3-8389-96ed6687f62c.jpg?n=299441_GLP-Page-Hero-0_1083x609.jpg" class="img-fluid rounded-start secondaryGamesIMGG alt="...">
+                                            </div>
+                                            <div class="col-md-7 d-flex align-items-center">
+                                                <div class="card-body text-white">
+                                                    <h5 class="card-title">BATTLEFIELD 2042</h5>
+                                                    <div class="categoriePrice d-flex flex-row">
+                                                        <p class="">ARS$&nbsp</p> 
+                                                        <p>2.499</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
     </main>
     </div>
     <footer>

@@ -79,9 +79,89 @@ body {
 ==		    DESTACADO PRINCIPAL     ==
 ====================================== */
 
+/* .mainGameCardContainer .mainGameCard .mainGameCardBody .mainGamecategories p {
+    cursor: auto;
+} */
+
+.mainGameCardContainer .mainGameCard .mainGameCardBody {
+    background-color: rgb(32, 32, 32);
+}
+
+.mainGameCardContainer .mainGameCard .mainGameCardIMG img{
+    position: relative;
+    float: left;
+    width:  100%;
+    height: 100%;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+    object-fit: cover;
+}
+
+/*
+======================================
+==    DESTACADOS SECUNDARIOS     	==
+====================================== */
+
+.secondaryGamesIMGG {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.secondaryGamesIMG {
+    box-shadow: 0px 15px 25px rgba(0, 0, 0, 1);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.secondaryGamesTitle h1{
+    color: rgb(134, 134, 134);
+}
 
 .mainGameCard {
     box-shadow: 0px 15px 25px rgba(0, 0, 0, 1);
+}
+
+
+
+/*
+======================================
+==		 CATEGORIAS     	         ==
+====================================== */
+
+.categoriesContainer .categorie {
+    border-right: 2px solid; rgb(134, 134, 134); 
+}
+
+.categoriesContainer .categorie a {
+    text-decoration: none;
+}
+
+
+.categoriesContainer .categorie .categoriesGameCard{
+    padding: 10px;
+    transition: all 150ms ease-out
+    
+}
+
+.categoriesContainer .categorie .categoriesGameCard .categorieCardIMG img{
+    position: relative;
+    float: left;
+    width:  100%;
+    height: 100%;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+    object-fit: cover;
+    
+}
+
+.categoriesContainer .categorie .gameLink .categoriesGameCard:hover{
+    background-color: rgb(32, 32, 32) !important;
+    border-radius: 0.7rem;
+    
 }
 
 
@@ -89,6 +169,8 @@ body {
 ======================================
 ==		     MEDIA QUERY     	    ==
 ====================================== */
+
+/* BUSCADOR  */
 
 @media screen and (max-width: 1280px) {
     /* BUSCADOR  */
@@ -109,6 +191,8 @@ body {
 }
 
 
+/* CARRITO */
+
 @media screen and (max-width: 435px) {
     /* CARRITO  */
     .indexCartContainer {
@@ -118,3 +202,98 @@ body {
         margin-top: 55px;
     }
 }
+
+
+
+@media screen and (max-width: 520px) {
+    /* card principal  */
+    .mainGameCardContainer .mainGameCard .mainGameCardBody .card-body {
+        display: none;
+    }
+    
+}
+
+@media screen and (max-width: 520px) {
+    /* card principal  */
+    .mainGameCardContainer .primaryGamesTitle {
+        color: rgb(134, 134, 134);
+        display: inline-block !important;
+    }
+    
+}
+
+
+/* DESTACADOS SECUNDARIOS  */
+
+@media screen and (max-width: 991px) {
+    /* cards secundarias  */
+    .secondaryGamesContainer .secondaryGamesIMGContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .secondaryGamesContainer .secondaryGamesIMGContainer .secondaryIMG{
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+    }
+}
+
+
+/* CATEGORIAS  */
+
+@media screen and (max-width: 1200px) {
+    /* cards categorias  */
+    .categoriesContainer div {
+        flex-direction: column !important;
+        width: 100%;
+        border: none !important;
+        align-items: center;
+        
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    /* cards categorias  */
+    .categoriesContainer .categorie .secondaryGamesTitle h1 {
+        text-align: center;
+        ;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    /* cards categorias  */
+    .categoriesContainer .categorie {
+        margin-right: 0 !important;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    /* cards categorias  */
+    .categoriesContainer .categorie .gameLink{
+        margin-right: 0 !important;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    /* cards categorias  */
+    .categoriesContainer .categorie .gameLink .categoriesGameCard .card-body {
+        text-align: center;
+        ;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    /* cards categorias  */
+    .categoriesContainer .categorie .gameLink .categoriesGameCard .card-body .categoriePrice{
+        flex-direction: row !important;
+        justify-content: center;
+    }
+}
+
+
+
