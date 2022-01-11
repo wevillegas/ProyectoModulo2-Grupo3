@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ESTILOS BOOSTSTRAP  -->
+    <link rel="stylesheet" href="/styles/bootstrap.css">
+    <!-- ESTILOS PROPIOS DEL INDEX  -->
+    <link rel="stylesheet" href="/styles/admin.css">
+    <!-- FONT AWESOME  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Administracion</title>
+</head>
+
+<body>
+    <main>
+        <!--
+        ======================================
+        ==		 CONTENEDOR PRINCIPAL     	==
+        ====================================== -->
+        <div class="container my-5">
+
+            <!--
+            ======================================
+            ==		       TABLA     	         ==
+            ====================================== -->
+            <section id="adminTable">
+                <div class="bg-white rounded-3 p-4">
+                    <!-- BOTON DE AGREGAR  -->
+                    <div class="row mb-1 px-4">
+                        <div class="col-10">
+                            <h1 class="d-none">Juegos disponibles</h1>
+                        </div>
+                        <div class="col-2 text-end">
+                            <button class="btn btn-success rounded-pill" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                    <!-- TABLA  -->
+                    <div class="mx-3 table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Código</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Categoría</th>
+                                    <th scope="col">Descripcion</th>
+                                    <th scope="col">Precio</th>
+                                    <th scope="col">Publicado</th>
+                                    <th scope="col">Opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                    <td>$100</td>
+                                    <td>pene</td>
+                                </tr> -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            <!--
+            ======================================
+            ==   MODAL DE CREACION DE JUEGO     ==
+            ====================================== -->
+            <section id="adminModal">
+                <!-- MODAL -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Agregar juego</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- FORMULARIO DE CREACION DE JUEGO  -->
+                                <form>
+                                    <!-- NOMBRE  -->
+                                    <div class="mb-3">
+                                        <label for="gameName" class="form-label">Nombre</label>
+                                        <input type="text" class="form-control" id="gameName" name="gameName" placeholder="Ingrese el nombre del juego">
+                                    </div>
+                                    <!-- CATEGORIA  -->
+                                    <div class="mb-3">
+                                        <label for="gameCategorie" class="form-label">Categoria</label>
+                                        <select class="form-select" name="gameCategorie" id="gameCategorie">
+                                            <option value="Drama">Acción</option>
+                                            <option value="Acción">Deportes</option>
+                                            <option value="Comedia">Estrategia</option>
+                                            <option value="Infantil">Rol</option>
+                                        </select>
+                                    </div>
+                                    <!-- DESCRIPCION  -->
+                                    <div class="mb-3">
+                                        <label for="gameDescription" class="form-label">Descripcion</label>
+                                        <textarea type="text" id="gameDescription" class="form-control" name="gameDescription" placeholder="Ingrese la descripcion del juego"></textarea>
+                                    </div>
+                                    <!-- PRECIO  -->
+                                    <div class="mb-3">
+                                        <label for="gamePrice" class="form-label">Precio</label>
+                                        <input type="number" class="form-control" id="gamePrice" name="gamePrice" placeholder="Ingrese el precio del juego">
+                                    </div>
+                                    <!-- IMAGEN  -->
+                                    <div class="mb-3">
+                                        <label for="gameIMG" class="form-label">Portada</label>
+                                        <input type="text" class="form-control" id="gameIMG" name="gameIMG" placeholder="Ingrese la portada del juego">
+                                    </div>
+                                    <!-- TRAILER  -->
+                                    <div class="mb-3">
+                                        <label for="gameTrailer" class="form-label">Trailer</label>
+                                        <input type="text" class="form-control" id="gameTrailer" name="gameTrailer" placeholder="Ingrese el trailer del juego">
+                                    </div>
+                                    <!-- PUBLICACION  -->
+                                    <div class="my-4 form-check">
+                                        <input type="checkbox" class="form-check-input" id="gamePublicated" name="gamePublicated">
+                                        <label class="form-check-label" for="gamePublicated">Publicar</label>
+                                    </div>
+                                    <!-- BOTON DE GUARDADO  -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-success">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <script src="/js/bootstrap.js"></script>
+</body>
+
+</html>
