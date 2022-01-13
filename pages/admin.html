@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- SWEET ALERT  -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Administracion</title>
 </head>
 
@@ -36,8 +38,8 @@
                             <h1 class="d-none">Juegos disponibles</h1>
                         </div>
                         <div class="col-2 text-end">
-                            <button class="btn btn-success rounded-pill" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal"><i class="fas fa-plus"></i></button>
+                            <button class="btn btn-success rounded-pill" id="btnModalOpen" data-bs-toggle="modal"
+                                data-bs-target="#modalJuegos"><i class="fas fa-plus"></i></button>
                         </div>
                     </div>
                     <!-- TABLA  -->
@@ -51,18 +53,12 @@
                                     <th scope="col">Descripcion</th>
                                     <th scope="col">Precio</th>
                                     <th scope="col">Publicado</th>
+                                    <th scope="col">Imagen</th>
                                     <th scope="col">Opciones</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <!-- <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>$100</td>
-                                    <td>pene</td>
-                                </tr> -->
+                            <tbody id="tableBody">
+                                
                             </tbody>
                         </table>
                     </div>
@@ -74,61 +70,67 @@
             ====================================== -->
             <section id="adminModal">
                 <!-- MODAL -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <div class="modal fade" id="modalJuegos" tabindex="-1" aria-labelledby="modalJuegosLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Agregar juego</h5>
+                                <h5 class="modal-title" id="modalJuegosLabel">Agregar juego</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <!-- FORMULARIO DE CREACION DE JUEGO  -->
-                                <form>
+                                <form id="gameForm" onsubmit="saveGame(event)">
+                                    <!-- CODIGO  -->
+                                    <div class="mb-3">
+                                        <label for="gameCode" class="form-label" id="labelCode">Codigo  <span class="text-danger">*</span></label>
+                                        <input type="number" class="form-control" id="gameCode" name="gameCode" placeholder="Ingrese el codigo unico del juego" required min="1">
+                                    </div>
                                     <!-- NOMBRE  -->
                                     <div class="mb-3">
-                                        <label for="gameName" class="form-label">Nombre</label>
-                                        <input type="text" class="form-control" id="gameName" name="gameName" placeholder="Ingrese el nombre del juego">
+                                        <label for="gameName" class="form-label">Nombre  <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="gameName" name="gameName" placeholder="Ingrese el nombre del juego" minlength="1" maxlength="30">
                                     </div>
                                     <!-- CATEGORIA  -->
                                     <div class="mb-3">
-                                        <label for="gameCategorie" class="form-label">Categoria</label>
-                                        <select class="form-select" name="gameCategorie" id="gameCategorie">
-                                            <option value="Drama">Acción</option>
-                                            <option value="Acción">Deportes</option>
-                                            <option value="Comedia">Estrategia</option>
-                                            <option value="Infantil">Rol</option>
+                                        <label for="gameCategorie" class="form-label">Categoria  <span class="text-danger">*</span></label>
+                                        <select class="form-select" name="gameCategorie" id="gameCategorie" required>
+                                            <option value="Action">Acción</option>
+                                            <option value="Sports">Deportes</option>
+                                            <option value="Strategy">Estrategia</option>
+                                            <option value="Rol">Rol</option>
                                         </select>
                                     </div>
                                     <!-- DESCRIPCION  -->
                                     <div class="mb-3">
-                                        <label for="gameDescription" class="form-label">Descripcion</label>
-                                        <textarea type="text" id="gameDescription" class="form-control" name="gameDescription" placeholder="Ingrese la descripcion del juego"></textarea>
+                                        <label for="gameDescription" class="form-label">Descripcion  <span class="text-danger">*</span></label>
+                                        <textarea type="text" id="gameDescription" class="form-control" name="gameDescription" placeholder="Ingrese la descripcion del juego" required minlength="3" maxlength="30"></textarea>
                                     </div>
                                     <!-- PRECIO  -->
                                     <div class="mb-3">
-                                        <label for="gamePrice" class="form-label">Precio</label>
-                                        <input type="number" class="form-control" id="gamePrice" name="gamePrice" placeholder="Ingrese el precio del juego">
+                                        <label for="gamePrice" class="form-label">Precio  <span class="text-danger">*</span></label>
+                                        <input type="number" class="form-control" id="gamePrice" name="gamePrice" placeholder="Ingrese el precio del juego" step="0.01" required max="1000" min="0">
                                     </div>
                                     <!-- IMAGEN  -->
                                     <div class="mb-3">
-                                        <label for="gameIMG" class="form-label">Portada</label>
-                                        <input type="text" class="form-control" id="gameIMG" name="gameIMG" placeholder="Ingrese la portada del juego">
+                                        <label for="gameIMG" class="form-label">Portada  <span class="text-danger">*</span></label>
+                                        <input type="url" class="form-control" id="gameIMG" name="gameIMG" placeholder="Ingrese la portada del juego" required >
                                     </div>
                                     <!-- TRAILER  -->
                                     <div class="mb-3">
-                                        <label for="gameTrailer" class="form-label">Trailer</label>
-                                        <input type="text" class="form-control" id="gameTrailer" name="gameTrailer" placeholder="Ingrese el trailer del juego">
+                                        <label for="gameTrailer" class="form-label">Trailer  <span class="text-danger">*</span></label>
+                                        <input type="url" class="form-control" id="gameTrailer" name="gameTrailer" placeholder="Ingrese el trailer del juego" required>
                                     </div>
                                     <!-- PUBLICACION  -->
                                     <div class="my-4 form-check">
                                         <input type="checkbox" class="form-check-input" id="gamePublicated" name="gamePublicated">
-                                        <label class="form-check-label" for="gamePublicated">Publicar</label>
+                                        <label class="form-check-label" for="gamePublicated">Publicar  <span class="text-danger">*</span></label>
                                     </div>
+                                    <span class="text-danger">* Requerido</span>
                                     <!-- BOTON DE GUARDADO  -->
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-success">Guardar</button>
+                                        <button type="submit" class="btn btn-success">Guardar</button>
                                     </div>
                                 </form>
                             </div>
@@ -139,6 +141,7 @@
         </div>
     </main>
     <script src="/js/bootstrap.js"></script>
+    <script src="/js/admin.js"></script>
 </body>
 
 </html>
