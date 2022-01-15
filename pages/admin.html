@@ -47,14 +47,15 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">Código</th>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">Categoría</th>
-                                    <th scope="col">Descripcion</th>
-                                    <th scope="col">Precio</th>
-                                    <th scope="col">Publicado</th>
-                                    <th scope="col">Imagen</th>
-                                    <th scope="col">Opciones</th>
+                                    <th scope="col" class="text-center">Código</th>
+                                    <th scope="col" class="text-center">Nombre</th>
+                                    <th scope="col" class="text-center">Categoría</th>
+                                    <th scope="col" class="text-center">Descripcion</th>
+                                    <th scope="col" class="text-center">Precio</th>
+                                    <th scope="col" class="text-center">Publicado</th>
+                                    <th scope="col" class="text-center">Recomendado</th>
+                                    <th scope="col" class="text-center">Imagen</th>
+                                    <th scope="col" class="text-center">Opciones</th>
                                 </tr>
                             </thead>
                             <tbody id="tableBody">
@@ -125,7 +126,11 @@
                                     <!-- PUBLICACION  -->
                                     <div class="my-4 form-check">
                                         <input type="checkbox" class="form-check-input" id="gamePublicated" name="gamePublicated">
-                                        <label class="form-check-label" for="gamePublicated">Publicar  <span class="text-danger">*</span></label>
+                                        <label class="form-check-label" for="gamePublicated">Publicar</label>
+                                    </div>
+                                    <div class="my-4 form-check">
+                                        <input type="checkbox" class="form-check-input" id="gameRecomended" name="gameRecomended">
+                                        <label class="form-check-label" for="gameRecomended">Añadir a recomendados</label>
                                     </div>
                                     <span class="text-danger">* Requerido</span>
                                     <!-- BOTON DE GUARDADO  -->

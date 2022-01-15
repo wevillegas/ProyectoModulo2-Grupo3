@@ -12,7 +12,7 @@ let existGame = false
 
 // creo la clase para añadir los juegos 
 class Game {
-    constructor(codigo, nombre, categoria, descripcion, precio, publicado, imagen, video) {
+    constructor(codigo, nombre, categoria, descripcion, precio, publicado, imagen, video, recomendado) {
         this.code = codigo
         this.name = nombre
         this.categorie = categoria
@@ -21,6 +21,7 @@ class Game {
         this.publicated = publicado
         this.IMG = imagen
         this.trailer = video
+        this.recomended = recomendado
     }
 }
 
@@ -60,11 +61,12 @@ const createGame = (evt) => {
         gamePrice,
         gamePublicated,
         gameIMG,
-        gameTrailer
+        gameTrailer,
+        gameRecomended
     } = gameForm.elements;
 
     // creo el nuevo juego usando la clase GAME definida anteriormente, asi todos los juegos creados tendrán la misma estructura 
-    const game = new Game(gameCode.value, gameName.value, gameCategorie.value, gameDescription.value, gamePrice.value, gamePublicated.checked, gameIMG.value, gameTrailer.value);
+    const game = new Game(gameCode.value, gameName.value, gameCategorie.value, gameDescription.value, gamePrice.value, gamePublicated.checked, gameIMG.value, gameTrailer.value, gameRecomended.checked);
 
 
     // si el codigo del juego coincide con uno ya creado, disparo un error y dejo de leer el codigo
@@ -103,6 +105,9 @@ const createGame = (evt) => {
 
     // llamo a la funcion para que pinte los juegos en la tabla
     RenderGameList()
+
+    pintarJuegosDestacados()
+
 }
 
 
@@ -113,7 +118,7 @@ function clearForm() {
     document.getElementById("gameForm").reset()
 }
 
-console.log(games)
+// console.log(games)
 
 // funcion para pintar los juegos en la tabla
 function RenderGameList() {
@@ -125,27 +130,36 @@ function RenderGameList() {
     // creo la variable donde irán los juegos, si no hay nada esta ira vacia
     let tableHTMLcode = ""
 
+
     // recorro el array de juegos, por cada juego iterado agregaré todo este codigo htmnl a la variable tableHTMLcode iniciada anteriormente (que es el juego iterado con todas sus propiedades)
     games.map(game => {
         tableHTMLcode += `<tr>
-        <th scope="row">${game.code}</th>
-        <td scope="row">${game.name}</td>
-        <td scope="row">${game.categorie}</td>
-        <td scope="row">${game.description}</td>
-        <td scope="row">${game.price}</td>
-        <td scope="row">${game.publicated}</td>
-        <td scope="row">
-        <div class="tableIMGContainer">
+        <th scope="row" class="border-end border-bottom-0 text-center">${game.code}</th>
+        <td scope="row" class="border-end border-bottom-0 text-center">${game.name}</td>
+        <td scope="row" class="border-end border-bottom-0 text-center">${game.categorie}</td>
+        <td scope="row" class="border-end border-bottom-0 text-center">${game.description}</td>
+        <td scope="row" class="border-end border-bottom-0 text-center">USD ${game.price}</td>
+        <td scope="row" class="border-end border-bottom-0 text-center">${game.publicated}</td>
+        <td scope="row" class="border-end border-bottom-0 text-center">${game.recomended}</td>
+        <td scope="row" class="border-end border-bottom-0">
+        <div class="tableIMGContainer d-flex justify-content-center">
             <img src ="${game.IMG}">
         </div>
         </td>
-        <td class="">
-        <button class="btn btn-primary adminBTN" onclick="editGame(this)" id="${game.code}">
+        <td class="border-bottom-0 text-center">
+
+        <button class="btn btn-dark adminBTN" onclick="editGame(this)" id="${game.code}">
                 <i class="fas fa-edit"></i>
             </button>
+
             <button class="btn btn-danger adminBTN" onclick="deleteGame(this)" id="${game.code}">
                 <i class="fas fa-trash-alt"></i>
             </button>
+
+            <button onclick="destacar(this)" id="${game.code}" class="border-0 bg-transparent px-0">
+                <i class="far fa-star fa-2x text-warning btn px-0 pb-3" id="star${game.code}"></i>
+            </button>
+
         </tr>`
     })
 
@@ -187,12 +201,15 @@ function deleteGame(game) {
             // llamo a la alerta para avisar que el juego se borró correctamente
             Swal.fire(
                 '¡Borrado!',
-                'El juego fue borrada',
+                'El juego fue borrado',
                 'success'
             )
         }
         // llamo a la funcion para que se pinten los juegos en la tabla
         RenderGameList()
+
+        pintarJuegosDestacados()
+
     })
 
 }
@@ -208,7 +225,7 @@ function editGame(editBtn) {
     // llamo al array del local storage
     let games = JSON.parse(localStorage.getItem("games")) || []
 
-    // busco el juego a modificar a traves del metodo find, la condicion es que el codigo del juego sea igual al id del boton (que viene del html). O sea, que el id del boton del juego que precione sea igual al del juego iterado. Si se cumple la condicion, ese juego se guarda en la variable searchedGame
+    // busco el juego a modificar a traves del metodo find, la condicion es que el codigo del juego sea igual al id del boton (que viene del html). O sea, que el id del boton del juego que presione sea igual al del juego iterado. Si se cumple la condicion, ese juego se guarda en la variable searchedGame
     let searchedGame = games.find(game => game.code === editBtn.id)
 
     // console.log(searchedGame)
@@ -222,7 +239,8 @@ function editGame(editBtn) {
         gamePrice,
         gamePublicated,
         gameIMG,
-        gameTrailer
+        gameTrailer,
+        gameRecomended
     } = gameForm.elements;
 
     // asigno los datos del juego buscado (a traves del metodo find) a los input del formulario de creacion de juegos
@@ -234,6 +252,7 @@ function editGame(editBtn) {
     gamePublicated.checked = searchedGame.publicated
     gameIMG.value = searchedGame.IMG
     gameTrailer.value = searchedGame.trailer
+    gameRecomended.checked = searchedGame.recomended
 
     existGame = true
 
@@ -250,6 +269,16 @@ function editGame(editBtn) {
 
 }
 
+// creo una funcion (esta funcion se ejecutará cuando le de al boton guardar en el formulario de juegos) la cual me va a definir internamente que funcion se va a realizar, la de modificar datos del juego o la de crear juego nuevo. La variable existGame será la que me maneje eso, inicializo la variable al principio del codigo con un valor del false, en la funcion de editGame le asigno un valor true, asi cuando se ejecute esta funcion, el existgame tendra valor de verdadero, por lo cual se ejecutara la funcion de changeGameData. En cambio, si la funcion sigue siendo falsa (no presiono el btn de editar juego) entonces la funcion que se ejecutará será la de crear juego
+function saveGame(event) {
+    event.preventDefault()
+
+    if (existGame === true) {
+        changeGameData()
+    } else {
+        createGame()
+    }
+}
 
 //FUNCION PARA MODIFICAR JUEGOS PT 2
 
@@ -266,6 +295,7 @@ function changeGameData() {
     let gamePublicated = document.getElementById("gamePublicated").checked
     let gameIMG = document.getElementById("gameIMG").value
     let gameTrailer = document.getElementById("gameTrailer").value
+    let gameRecomended = document.getElementById("gameRecomended").checked
     
     // itero el array de juegos, si el codigo del juego iterado coincide con el valor del codigo de input (gameCode), entonces igualo cada propiedad del juego a los valores que se encuentran en los inputs del formulario, pudiendo así modificar los valores del juego
     games.map(game => {
@@ -276,6 +306,7 @@ function changeGameData() {
             game.publicated = gamePublicated
             game.IMG = gameIMG
             game.video = gameTrailer
+            game.recomended = gameRecomended
         }
     })
     
@@ -298,19 +329,62 @@ function changeGameData() {
         
         // pinto el array de juegos en la tabla
         RenderGameList()
+
+        pintarJuegosDestacados()
+
     }
 
 
-    // creo una funcion (esta funcion se ejecutará cuando le de al boton guardar en el formulario de juegos) la cual me va a definir internamente que funcion se va a realizar, la de modificar datos del juego o la de crear juego nuevo. La variable existGame será la que me maneje eso, inicializo la variable al principio del codigo con un valor del false, en la funcion de editGame le asigno un valor true, asi cuando se ejecute esta funcion, el existgame tendra valor de verdadero, por lo cual se ejecutara la funcion de changeGameData. En cambio, si la funcion sigue siendo falsa (no presiono el btn de editar juego) entonces la funcion que se ejecutará será la de crear juego
-    function saveGame(event) {
-        event.preventDefault()
-    
-        if (existGame === true) {
-            changeGameData()
-        } else {
-            createGame()
-        }
+
+    // FUNCION PARA DESTACAR JUEGO
+    function destacar(star) {
+
+        // Llamo al array del ls
+        let games = JSON.parse(localStorage.getItem("games")) || []
+
+        // recorro el array
+        games.map(game => {
+            // si el juego iterado coincide con el id del boton apretado, entonces se le agregará a ese juego la propiedad star, la cual significa destacado
+            if(game.code === star.id){
+                Object.defineProperty(game, "star", {value: true, writable: true, enumerable: true})
+                // si eñ juego iterado tiene esa propiedad, entonces la estrella se pintará
+            } if (game.star) {
+                const estrella = document.getElementById(`star${game.code}`)
+                estrella.classList.remove("far")
+                estrella.classList.add("fas")
+            }
+        })
+        
+        // alerta que avisa q el juego fue destacado
+        Swal.fire({
+            title: '¡Juego destacado!',
+            icon: 'success',
+        })
+        
+        console.log(games)
+        // envio todo al local storage
+        localStorage.setItem("games", JSON.stringify(games))
     }
+
+
 
     // llamo a la funcion para que se pinten los juegos en la tabla
     RenderGameList()
+    
+    // FUNCION PARA PINTAR LAS ESTRELLAS DE LOS JUEGOS (se usa esta funcion para q se pinte la estrella seleccionada y no solo la primera como sucedia antes de crear la funcion)
+    function pintarJuegosDestacados(){
+        // llamo al array del ls
+        let games = JSON.parse(localStorage.getItem("games")) || []
+        // itero el array, si el juego iterado es el destacado ( el q tiene la propiedad star, entonces pinto la estrella)
+        games.map(game => {
+            if (game.star) {
+                const estrella = document.getElementById(`star${game.code}`)
+                estrella.classList.remove("far")
+                estrella.classList.add("fas")
+            }
+        })
+    }
+
+    
+    // EJECUTO LA FUNCION
+    pintarJuegosDestacados()
