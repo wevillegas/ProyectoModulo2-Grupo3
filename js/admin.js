@@ -36,6 +36,10 @@ btnModalOpen.addEventListener("click", () => {
     document.getElementById("labelCode").innerHTML = `Codigo <span class="text-danger">*</span>`;
     //quito el bloqueo el input del codigo para que pueda ser agregado
     document.getElementById('gameCode').removeAttribute("disabled");
+    // modifico el boton para guardar/modificar juego
+    document.getElementById("modalSaveBtn").classList.remove("btn-dark")
+    document.getElementById("modalSaveBtn").classList.add("btn-success")
+    document.getElementById("modalSaveBtn").innerHTML = "Agregar"
 })
 
 
@@ -148,11 +152,11 @@ function RenderGameList() {
         </td>
         <td class="border-bottom-0 text-center">
 
-        <button class="btn btn-dark adminBTN" onclick="editGame(this)" id="${game.code}">
+        <button class="btn btn-outline-dark adminBTN" onclick="editGame(this)" id="${game.code}">
                 <i class="fas fa-edit"></i>
             </button>
 
-            <button class="btn btn-danger adminBTN" onclick="deleteGame(this)" id="${game.code}">
+            <button class="btn btn-outline-danger adminBTN" onclick="deleteGame(this)" id="${game.code}">
                 <i class="fas fa-trash-alt"></i>
             </button>
 
@@ -262,11 +266,14 @@ function editGame(editBtn) {
     document.getElementById("labelCode").innerHTML = "Codigo";
     // bloqueo el input del codigo para que no se pueda modificarlo
     document.getElementById('gameCode').setAttribute("disabled", "");
+    // modifico el boton para guardar/modificar juego
+    document.getElementById("modalSaveBtn").classList.remove("btn-success")
+    document.getElementById("modalSaveBtn").classList.add("btn-dark")
+    document.getElementById("modalSaveBtn").innerHTML = "Modificar"
+    
 
     // muestro el modal de creacion/modificacion de juego
     modalJuegos.show()
-
-
 }
 
 // creo una funcion (esta funcion se ejecutará cuando le de al boton guardar en el formulario de juegos) la cual me va a definir internamente que funcion se va a realizar, la de modificar datos del juego o la de crear juego nuevo. La variable existGame será la que me maneje eso, inicializo la variable al principio del codigo con un valor del false, en la funcion de editGame le asigno un valor true, asi cuando se ejecute esta funcion, el existgame tendra valor de verdadero, por lo cual se ejecutara la funcion de changeGameData. En cambio, si la funcion sigue siendo falsa (no presiono el btn de editar juego) entonces la funcion que se ejecutará será la de crear juego
@@ -329,6 +336,9 @@ function changeGameData() {
         
         // pinto el array de juegos en la tabla
         RenderGameList()
+
+
+        existGame = false
 
         pintarJuegosDestacados()
 
