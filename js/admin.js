@@ -170,6 +170,7 @@ function RenderGameList() {
     // agrego a la tabla el codigo html del tableHTMLcode y lo inserto en el html
     tableBody.innerHTML = tableHTMLcode
 
+    showStar()
 }
 
 
@@ -196,6 +197,11 @@ function deleteGame(game) {
             // traigo los datos del localStorage
             let juegos = JSON.parse(localStorage.getItem("games")) || []
 
+            let addGameBtn = document.getElementById("addGameBtnDiv")
+
+            // llamo a la funcion para esconder la estrella de arriba si es que borré el juego destacado
+            hideStar()
+
             // filtro el array traido del LS, el nuevo array que voy a retornar va a tener todos los juegos cuyo codigo NO sea igual al id del boton borrar(traido del html). Así mi nuevo array tendrá todos los juegos menos el que fue presionado para borrar, ya que su codigo coincide con el id del boton. O sea, que cuando se itero ese juego, el metodo filter devolvió un false (no se cumplio la condicion, la cual era que el codio del juego NO SEA IGUAL al id del boton), por lo tanto ese juego no entrará en el nuevo array
             let filteredGames = juegos.filter(juego => juego.code != game.id)
 
@@ -213,7 +219,6 @@ function deleteGame(game) {
         RenderGameList()
 
         pintarJuegosDestacados()
-
     })
 
 }
@@ -299,6 +304,7 @@ function changeGameData() {
     let gameName = document.getElementById("gameName").value
     let gameCategorie = document.getElementById("gameCategorie").value
     let gameDescription = document.getElementById("gameDescription").value
+    let gamePrice = document.getElementById("gamePrice").value
     let gamePublicated = document.getElementById("gamePublicated").checked
     let gameIMG = document.getElementById("gameIMG").value
     let gameTrailer = document.getElementById("gameTrailer").value
@@ -309,7 +315,8 @@ function changeGameData() {
         if(game.code === gameCode){
             game.name = gameName
             game.categorie = gameCategorie
-            game.descripcion = gameDescription
+            game.description = gameDescription
+            game.price = gamePrice
             game.publicated = gamePublicated
             game.IMG = gameIMG
             game.video = gameTrailer
@@ -348,10 +355,21 @@ function changeGameData() {
 
     // FUNCION PARA DESTACAR JUEGO
     function destacar(star) {
-
         // Llamo al array del ls
         let games = JSON.parse(localStorage.getItem("games")) || []
 
+
+        // si ya tengo un juego con la propiedad destacado (star) entonces tiro un error y dejo de ejecutar el codigo
+        if (games.some(game => game.star)){
+            Swal.fire({
+                title: "Error",
+                text: "Solo puedes destacar un juego a la vez",
+                icon: "error",
+            })
+            return
+        }
+
+        
         // recorro el array
         games.map(game => {
             // si el juego iterado coincide con el id del boton apretado, entonces se le agregará a ese juego la propiedad star, la cual significa destacado
@@ -371,6 +389,25 @@ function changeGameData() {
             icon: 'success',
         })
         
+
+
+        // hago referencia al div donde irá la estrella de arriba
+        let addGameBtn = document.getElementById("addGameBtnDiv")
+
+
+        // si hay algun juego con la propiedad star, pinto la estrella de arriba para habilitar la opcion para borrar dicho atributo
+        if (games.some(game => game.star)){
+            // corro el boton de agregar a la izquierda
+            addGameBtn.classList.remove("col-2")
+            addGameBtn.classList.add("col-1")
+    
+            // hago aparecer la estrella para borrar 
+            let estrella = document.getElementById("noStarIndex")
+            estrella.classList.remove("d-none")
+        }
+
+
+
         console.log(games)
         // envio todo al local storage
         localStorage.setItem("games", JSON.stringify(games))
@@ -394,6 +431,50 @@ function changeGameData() {
             }
         })
     }
+
+    
+
+    
+    // funcion para esconder estrella cuando elimine el destacado
+    function hideStar (){
+        
+        let games = JSON.parse(localStorage.getItem("games")) || []
+        
+        let addGameBtn = document.getElementById("addGameBtnDiv")
+        
+        
+        if (games.some(game => game.star)){
+            // corro el boton de agregar a la izquierda
+            addGameBtn.classList.remove("col-1")
+            addGameBtn.classList.add("col-2")
+    
+            // hago aparecer la estrella para borrar 
+            let estrella = document.getElementById("noStarIndex")
+            estrella.classList.add("d-none")
+        }
+    }
+
+
+    
+    // // funcion para mostrar estrella para eliminar destacado
+    // function showStar() {
+
+    //     let games = JSON.parse(localStorage.getItem("games")) || []
+
+    //     let addGameBtn = document.getElementById("addGameBtnDiv")
+
+
+    //     if (games.some(game => game.star)){
+    //         // corro el boton de agregar a la izquierda
+    //         addGameBtn.classList.remove("col-2")
+    //         addGameBtn.classList.add("col-1")
+    
+    //         // hago aparecer la estrella para borrar 
+    //         let estrella = document.getElementById("noStarIndex")
+    //         estrella.classList.remove("d-none")
+    //     }
+    // }
+
 
     
     // EJECUTO LA FUNCION
