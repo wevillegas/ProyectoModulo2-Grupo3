@@ -195,8 +195,6 @@ function deleteGame(game) {
             // traigo los datos del localStorage
             let juegos = JSON.parse(localStorage.getItem("games")) || []
 
-            let addGameBtn = document.getElementById("addGameBtnDiv")
-
             // filtro el array traido del LS, el nuevo array que voy a retornar va a tener todos los juegos cuyo codigo NO sea igual al id del boton borrar(traido del html). Así mi nuevo array tendrá todos los juegos menos el que fue presionado para borrar, ya que su codigo coincide con el id del boton. O sea, que cuando se itero ese juego, el metodo filter devolvió un false (no se cumplio la condicion, la cual era que el codio del juego NO SEA IGUAL al id del boton), por lo tanto ese juego no entrará en el nuevo array
             let filteredGames = juegos.filter(juego => juego.code != game.id)
 
