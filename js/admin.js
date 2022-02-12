@@ -276,7 +276,6 @@ function editGame(editBtn) {
     document.getElementById("modalSaveBtn").classList.add("btn-dark")
     document.getElementById("modalSaveBtn").innerHTML = "Modificar"
     
-
     // muestro el modal de creacion/modificacion de juego
     modalJuegos.show()
 }
@@ -324,7 +323,6 @@ function changeGameData() {
         }
     })
     
-    
     // envio los cambios al local storage
     localStorage.setItem("games", JSON.stringify(games))
     
@@ -344,7 +342,6 @@ function changeGameData() {
         // pinto el array de juegos en la tabla
         RenderGameList()
 
-
         existGame = false
 
         pintarJuegosDestacados()
@@ -358,7 +355,6 @@ function changeGameData() {
         // Llamo al array del ls
         let games = JSON.parse(localStorage.getItem("games")) || []
 
-
         // si ya tengo un juego con la propiedad destacado (star) entonces tiro un error y dejo de ejecutar el codigo
         if (games.some(game => game.star)){
             Swal.fire({
@@ -368,7 +364,6 @@ function changeGameData() {
             })
             return
         }
-
         
         // recorro el array
         games.map(game => {
@@ -390,10 +385,8 @@ function changeGameData() {
         })
         
 
-
         // hago referencia al div donde irá la estrella de arriba
         let addGameBtn = document.getElementById("addGameBtnDiv")
-
 
         // si hay algun juego con la propiedad star, pinto la estrella de arriba para habilitar la opcion para borrar dicho atributo
         if (games.some(game => game.star)){
@@ -405,8 +398,6 @@ function changeGameData() {
             let estrella = document.getElementById("noStarIndex")
             estrella.classList.remove("d-none")
         }
-
-
 
         console.log(games)
         // envio todo al local storage
@@ -434,15 +425,36 @@ function changeGameData() {
 
     
 
+
+
+
+    // funcion para mostrar estrella para eliminar destacado
+    function showStar() {
+
+        let games = JSON.parse(localStorage.getItem("games")) || []
+
+        let addGameBtn = document.getElementById("addGameBtnDiv")
+
+
+        if (games.some(game => game.star)){
+            // corro el boton de agregar a la izquierda
+            addGameBtn.classList.remove("col-2")
+            addGameBtn.classList.add("col-1")
     
+            // hago aparecer la estrella para borrar 
+            let estrella = document.getElementById("noStarIndex")
+            estrella.classList.remove("d-none")
+        }
+    }
+
     // funcion para esconder estrella cuando elimine el destacado
     function hideStar (){
         
         let games = JSON.parse(localStorage.getItem("games")) || []
-        
+
         let addGameBtn = document.getElementById("addGameBtnDiv")
-        
-        
+
+
         if (games.some(game => game.star)){
             // corro el boton de agregar a la izquierda
             addGameBtn.classList.remove("col-1")
@@ -455,27 +467,9 @@ function changeGameData() {
     }
 
 
-    
-    // // funcion para mostrar estrella para eliminar destacado
-    // function showStar() {
-
-    //     let games = JSON.parse(localStorage.getItem("games")) || []
-
-    //     let addGameBtn = document.getElementById("addGameBtnDiv")
 
 
-    //     if (games.some(game => game.star)){
-    //         // corro el boton de agregar a la izquierda
-    //         addGameBtn.classList.remove("col-2")
-    //         addGameBtn.classList.add("col-1")
-    
-    //         // hago aparecer la estrella para borrar 
-    //         let estrella = document.getElementById("noStarIndex")
-    //         estrella.classList.remove("d-none")
-    //     }
-    // }
 
 
-    
     // EJECUTO LA FUNCION
     pintarJuegosDestacados()
